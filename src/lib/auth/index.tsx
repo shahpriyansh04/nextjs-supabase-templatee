@@ -1,21 +1,21 @@
 import React from "react";
 import { TailSpin } from "react-loader-spinner";
 import supabase from "../supabase";
-import { AuthError, OAuthResponse, User } from "@supabase/supabase-js";
+import {
+  AuthChangeEvent,
+  AuthError,
+  AuthResponse,
+  OAuthResponse,
+  User,
+} from "@supabase/supabase-js";
 import createUser from "./createUser";
 import loginUser from "./loginUser";
 import googleAuth from "./loginUser";
 
 interface AuthProps {
   user: User | null;
-  createUser: (
-    email: string,
-    password: string
-  ) => Promise<User | null | AuthError>;
-  loginUser: (
-    email: string,
-    password: string
-  ) => Promise<User | null | AuthError>;
+  createUser: (email: string, password: string) => Promise<AuthResponse>;
+  loginUser: (email: string, password: string) => Promise<AuthResponse>;
 } /* Add more types here if required */
 
 export const AuthContext = React.createContext<AuthProps | null>(null);
