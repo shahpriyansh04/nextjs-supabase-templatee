@@ -18,9 +18,9 @@ interface AuthProps {
   loginUser: (email: string, password: string) => Promise<AuthResponse>;
 } /* Add more types here if required */
 
-export const AuthContext = React.createContext<AuthProps | null>(null);
+export const AuthContext = React.createContext<AuthProps>({} as AuthProps);
 
-export function useAuth(): AuthProps | null {
+export function useAuth(): AuthProps {
   return React.useContext(AuthContext);
 }
 
